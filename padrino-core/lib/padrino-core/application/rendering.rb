@@ -210,7 +210,7 @@ module Padrino
           options[:layout] = false unless is_included_extension ? layout_engine : layout_engine == engine
           options[:layout_engine] = layout_engine || engine if options[:layout]
         elsif options[:layout].present?
-          if "#{options[:layout]}".index('/') == 0
+          if "#{options[:layout]}".index('/') == 0 && !options.has_key?(:views)
             # if this isn't emptied, :views will prepend to absolute path
             options = {:layout_options => {:views => ''}}.merge(options)
           end
